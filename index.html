@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portafolio de Josias - Game Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #151a2c;
+      --accent: #ffb347;
+      --accent-soft: rgba(255, 179, 71, 0.12);
+      --text: #f5f5f5;
+      --muted: #a0a4b8;
+      --border: #262b40;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2340 0, #050712 55%, #020308 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 16px 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .profile {
+      background: linear-gradient(135deg, rgba(21, 26, 44, 0.96), rgba(9, 12, 26, 0.98));
+      border-radius: var(--radius-lg);
+      padding: 24px 26px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      flex: 1 1 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 179, 71, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(120, 180, 255, 0.12), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .profile-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(5, 8, 20, 0.85);
+      border: 1px solid rgba(255, 179, 71, 0.35);
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255, 179, 71, 0.9);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .bio {
+      font-size: 14px;
+      color: #d3d6e8;
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(8, 11, 24, 0.9);
+      color: #e5e7f5;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #ffb347, #ff7b54);
+      color: #1b1020;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(255, 123, 84, 0.45);
+    }
+
+    .btn-primary span {
+      font-size: 16px;
+    }
+
+    .contact-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .avatar-card {
+      width: 220px;
+      max-width: 100%;
+      background: rgba(9, 12, 26, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 179, 71, 0.16), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(120, 180, 255, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .avatar-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      margin: 0 auto 10px;
+      background: radial-gradient(circle at 30% 20%, #fff7e6, #ffb347, #ff7b54);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #1b1020;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .avatar-name {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .avatar-role {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .avatar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .avatar-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e5e7f5;
+    }
+
+    .avatar-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    section {
+      background: rgba(9, 12, 26, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span {
+      font-size: 18px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .project-card {
+      background: radial-gradient(circle at top left, rgba(255, 179, 71, 0.08), transparent 55%);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 12px 12px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .project-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-label {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(255, 179, 71, 0.5);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: #d3d6e8;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-links {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(255, 179, 71, 0.35);
+    }
+
+    .project-link span {
+      font-size: 14px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .skill-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(5, 8, 20, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e5e7f5;
+    }
+
+    .experience-item {
+      font-size: 13px;
+      color: #d3d6e8;
+      margin-bottom: 8px;
+    }
+
+    .experience-item strong {
+      color: #ffffff;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="profile">
+        <div class="profile-inner">
+          <div class="tagline">
+            <div class="tag-dot"></div>
+            <span>Game Developer · Unity · C#</span>
+          </div>
+          <h1>Josias — Portafolio de proyectos</h1>
+          <p class="subtitle">Desarrollo de videojuegos, gameplay systems y experiencias interactivas con enfoque en calidad y detalle.</p>
+          <p class="bio">
+            Soy desarrollador de videojuegos con experiencia en Unity, C# y diseño de mecánicas. Me gusta construir
+            experiencias pulidas, con buena sensación de juego, UI clara y una base técnica sólida. Aquí puedes ver
+            algunos de los proyectos en los que he participado y colaborado.
+          </p>
+          <div class="chips">
+            <span class="chip">Unity · C#</span>
+            <span class="chip">Game Design</span>
+            <span class="chip">Gameplay Programming</span>
+            <span class="chip">Git & GitHub</span>
+          </div>
+          <div class="contact">
+            <a class="btn-primary" href="https://github.com/Alebald2025" target="_blank" rel="noopener noreferrer">
+              <span>↗</span> Ver perfil en GitHub
+            </a>
+            <span class="contact-note">Disponible para colaboraciones y nuevos proyectos.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="avatar-card">
+        <div class="avatar-inner">
+          <div class="avatar-circle">J</div>
+          <div class="avatar-name">Josias</div>
+          <div class="avatar-role">Game Developer · Unity</div>
+          <div class="avatar-tags">
+            <span class="avatar-tag">Endless runners</span>
+            <span class="avatar-tag">2D/3D Gameplay</span>
+            <span class="avatar-tag">UI & UX</span>
+          </div>
+          <div class="avatar-footer">
+            <span>Basado en España</span>
+            <span>Colaboración remota</span>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section>
+        <h2 class="section-title"><span>🎮</span> Proyectos destacados</h2>
+        <p class="section-subtitle">Selección de proyectos publicados en GitHub, centrados en gameplay, diseño de niveles y experiencia de usuario.</p>
+
+        <div class="projects-grid">
+          <!-- Space Invaders -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-name">Space Invaders</div>
+              <div class="project-label">Arcade · Shooter</div>
+            </div>
+            <p class="project-desc">
+              Versión del clásico <em>Space Invaders</em> con mecánicas arcade, oleadas de enemigos y progresión de dificultad.
+              Ideal para demostrar control de input, lógica de disparos, colisiones y gestión de entidades en pantalla.
+            </p>
+            <div class="project-meta">
+              <span>Rol: Colaboración en gameplay y lógica</span>
+              <span>Enfoque: Mecánicas arcade, balance y ritmo de juego</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/mmrafique/Space_Invaders" target="_blank" rel="noopener noreferrer">
+                <span>⬈</span> Ver repositorio
+              </a>
+            </div>
+          </article>
+
+          <!-- Ice Climber -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-name">Ice Climber</div>
+              <div class="project-label">Plataformas · Escalada</div>
+            </div>
+            <p class="project-desc">
+              Proyecto inspirado en juegos de escalada vertical, con plataformas, saltos precisos y obstáculos. Muestra trabajo
+              en físicas, detección de colisiones y diseño de niveles que exigen timing y control del personaje.
+            </p>
+            <div class="project-meta">
+              <span>Rol: Desarrollo de mecánicas de movimiento</span>
+              <span>Enfoque: Plataformas, físicas y diseño de niveles</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Alebald2025/IceClimber_Build" target="_blank" rel="noopener noreferrer">
+                <span>⬈</span> Ver repositorio
+              </a>
+            </div>
+          </article>
+
+          <!-- Endless Game -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-name">Endless Game</div>
+              <div class="project-label">Endless Runner</div>
+            </div>
+            <p class="project-desc">
+              Juego tipo <em>endless runner</em> con generación continua de obstáculos y progresión de dificultad. Enfocado en
+              sistemas de generación procedural, control de cámara y sensación de fluidez en el movimiento.
+            </p>
+            <div class="project-meta">
+              <span>Rol: Gameplay & sistemas</span>
+              <span>Enfoque: Generación procedural, ritmo y rejugabilidad</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Alebald2025/EndlessGame" target="_blank" rel="noopener noreferrer">
+                <span>⬈</span> Ver repositorio
+              </a>
+            </div>
